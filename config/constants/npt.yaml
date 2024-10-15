@@ -1,0 +1,7 @@
+# for 1024, drop BLAT_ECOLX_Jacquier_2013 and RL40A YEAST as landscapes are too small
+# alternatively, only do 1024 (or 2048) on the multiples landscapes: this makes more sense.
+selected_singles: 'BLAT_ECOLX_Jacquier_2013,CALM1_HUMAN_Weile_2017,DYR_ECOLI_Thompson_2019,DLG4_RAT_McLaughlin_2012,REV_HV1H2_Fernandes_2016,TAT_HV1BR_Fernandes_2016,RL40A_YEAST_Roscoe_2013,P53_HUMAN_Giacomelli_2018_WT_Nutlin'
+selected_multiples: 'PABP_YEAST_Melamed_2013,HIS7_YEAST_Pokusaeva_2019,CAPSD_AAV2S_Sinai_2021,GFP_AEQVI_Sarkisyan_2016,GRB2_HUMAN_Faure_2021'
+# reduced_multiples: 'PABP_YEAST_Melamed_2013,CAPSD_AAV2S_Sinai_2021,GFP_AEQVI_Sarkisyan_2016,GRB2_HUMAN_Faure_2021'
+# dropping PHOT_CHLRE as no zero shot file available
+# removing HIS7_YEAST_Pokusaeva_2019 from multiples since the embeddings file is ~500Gb

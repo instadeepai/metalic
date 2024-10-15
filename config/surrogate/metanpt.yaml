@@ -1,0 +1,79 @@
+_target_: meta.models.metasurrogate.ProteinNPTMetaSurrogate
+name: "metanpt"
+train_config:
+  support_size: 0 # 0 # 16 # 128 # null
+  query_size: 100 # 100
+  use_all_data: False
+  max_context_sz: 228 # 100 # 116 # 228 # 1000 # Limits max contex if support or query set varies (is null)
+  default_query_sz: 100 # Only used in evaluation and if query_sz is null
+  default_support_sz: 128 # Only used in evaluation and if query_sz is null
+  num_train_steps: 50000 # 25000 # 50000 # 100000
+  num_sched_steps: 100000 # The number of steps when schedule is fully completed and lr is near 0
+  warmup_frac: 0.05
+  resume_training: False
+  batch_sz: 4
+  eval_every: 5000 # 5000 2000 4000 # 800 # 80 # 10000
+  weight_decay: 5e-3 # This looks like 5e-3 in json but 5e-2 or 10e-8 in paper
+  learning_rate: 6e-5 # 6e-5
+  min_learning_rate_fraction: 1e-5 # NPT may have used .03333, depending on interpretation
+  adam_eps: 1e-8
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  gradient_clip_value: 1.0
+  use_lr_scheduler: True
+  ESM_embed_model: "esm2_t6_8M_UR50D" # "esm1v_t33_650M_UR90S_1" # "esm2_t6_8M_UR50D" # See https://github.com/facebookresearch/esm?tab=readme-ov-file
+  ESM_embed_layer: 3 # 3 # null uses max layer
+  use_dummy_padding: False # Truncate and pad to constant length for testing
+  freeze_embed: True
+  embed_on_cpu: False
+  warmup_lr_for_finetune: False # False # Note: Even when true, the very first step of fine-tuning will use full lr
+  reptile: False # Use Reptile version meta-learning
+  reptile_uses_adam: True
+  reptile_lr: 1. # 3e-5, .333, 1. # Note: ignored if reptile_uses_adam
+  reptile_num_finetune_at_train: 3
+  num_finetune_at_eval: 100 # 100. null for no fine-tuning
+  finetune_eval_chunk_strategy: "chunk" # Options: "chunk", "full", "split"
+  eval_chunk_strategy: "chunk" # Options: "chunk", "full"
+  kl_weight: 0.01 # Only used if latent_index is not null
+  relabel_proteins_strategy: "relabel_dataset" # Options: "relabel_dataset", "relabel_batch"
+  zero_shot_data_weight: null
+  zero_shot_wt_strategy: "sample_dataset" # Options: "real", "sample_dataset", "sample_batch"
+  latent_distance_data_weight: null
+  latent_rand_proj: False
+  latent_dist_pool: False
+  latent_goal_max_num: 3 # 10, 3
+  latent_goal_strategy: "sample_batch" # Options: "sample_dataset", "sample_batch"
+  nkde_data_weight: null
+  nk_combine_subset: True
+  nk_max_n: 4
+  nk_max_k: 3
+  nk_max_d: 2
+  landscape_normalization: "standardize" # Options: null, "normalize", "standardize"
+  loss_type: "ranking_full" # "ranking_full" default. Can be: "mse", "ranking", "ranking_sampled", "ranking_full", "adaptively_smoothed_ranking_full"
+  num_pref_samples: 5 # For ranking_sampled. Must be < size of query set. Null for all of query set.
+  label_smoothing: 0.0 # For ranking, ranking_full, and adaptively_smoothed_ranking_full
+  label_smoothing_beta: 1.0 # For adaptively_smoothed_ranking_full
+  apply_loss_to_support: False # False
+model_config:
+  context_normalization: null # Options: null, "normalize", "standardize"
+  use_perceiver_layer: False
+  embed_dim: 768 # 768 # 200 in json and 768 in paper
+  conv_kernel_size: 9 # 7 in json and 9 in paper
+  num_protein_npt_layers: 5 # 5
+  f_conditions_on_pooled_seq: True
+  use_cnn_before_npt: False
+  use_cnn_after_npt: False
+  axial_embed_dim: 400
+  attention_heads: 4
+  dropout_prob: 0.0 # 0.0
+  attention_dropout: 0.1 # 0.1
+  activation_dropout: 0.1 # 0.1
+  max_tokens_per_context: 65536
+  deactivate_col_attention: False # False
+  use_tranception_style_row_attention: False
+  f_mlp_layer_sizes: [768, 768, 768, 768] # [768, 768, 768, 768]
+  latent_index: null # null, 1
+  condition_on_wild_type: False
+  aux_pred: False
+  aux_pred_model: "ESM-IF1" # options in prefbo constants. Or null, to use embedding model
+  make_wt_aux_pred_zero: False

@@ -1,0 +1,38 @@
+defaults:
+  - task: gym_metasupervised
+  - surrogate: metanpt
+  - _self_
+
+trial_id: 0
+project_name: metalic
+version: v0.0
+
+# We will sweep this seed, but leave test split constant.
+# To sweep the same seeds for both set seed: ${task.dataset.seed} and sweep that
+seed: 46 # 57, 75, 46
+evaluate_first: true
+exit_after_first_eval: false # false
+evaluate_end: true
+
+# Directories for loading and storing data
+results_dir: results
+exp_name: ${experiment_group}/${task.task_name}/${surrogate.name}
+timestamp: ${now:%Y-%m-%d_%H-%M-%S}
+log_dir: ${results_dir}/${exp_name}
+hydra_log_dir: ${log_dir}/${timestamp}
+
+# https://hydra.cc/docs/configure_hydra/workdir/
+# directories for saving hydra logs and yaml configs
+# At runtime, the path of the output directory can be accessed via the hydra.runtime.output_dir variable.
+hydra:
+  run:
+    dir: ./${hydra_log_dir}
+  sweep:
+    dir: ./${hydra_log_dir}
+    subdir: ${hydra.job.num}
+
+logging:
+  type: 'terminal'    # terminal, neptune
+  name: 'metalic'
+  mode: 'async'       # async, sync, offline, debug - only used for neptune logging
+  tags: [ '${experiment_group}' ]

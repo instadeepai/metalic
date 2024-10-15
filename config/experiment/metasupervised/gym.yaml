@@ -1,0 +1,16 @@
+# @package _global_
+# https://hydra.cc/docs/patterns/configuring_experiments/
+
+defaults:
+  - /constants: npt
+  - override /task: gym_metasupervised
+  - override /surrogate: metanpt
+
+experiment_group: metanpt_test
+
+# https://github.com/facebookresearch/hydra/issues/1258
+# https://hydra.cc/docs/advanced/override_grammar/extended/
+hydra:
+  sweeper:
+    params:
+      seed: 57, 75, 46

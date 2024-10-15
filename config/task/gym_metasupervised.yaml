@@ -1,0 +1,32 @@
+_target_: meta.tasks.proteingym.tasks.ProteinGymMetaSLTask
+defaults:
+  - _self_
+
+task_name: gym_metasupervised
+metric_names: ['spearman', 'mse', 'standardized_mse', 'normalized_mse']
+mutant_type: 'both' # 'both', 'single', 'multiple' # Mutant type for training data.
+allow_partial_query_set: False
+num_evals_for_chunked: 3
+early_stop_data_type: "additional" # "split", "additional", "none"
+
+# There are 216 total datasets before filtering for length.
+# There are 189 total if max_protein_length is 750 and not null.
+# (In that case, there are 121 single mutants and 68 multiple mutants).
+dataset:
+  max_protein_length: 750
+  train_dms_names: null # "HXK4_HUMAN_Gersing_2023_abundance,VKOR1_HUMAN_Chiasson_2020_activity,D7PM05_CLYGR_Somermeyer_2022,ANCSZ_Hobbs_2022,FECA_ECOLI_Tsuboyama_2023_2D1U,A0A1I9GEU1_NEIME_Kennouche_2019,TNKS2_HUMAN_Tsuboyama_2023_5JRT,YAIA_ECOLI_Tsuboyama_2023_2KVT,CUE1_YEAST_Tsuboyama_2023_2MYX,RL40A_YEAST_Roscoe_2014" # null # randomly chosen if null
+  num_train: null # null uses all data. # For Workshop paper without datasets that failed to download: 121 - 8 single, 185 - 8 both. (-8 for val)
+  num_val: null # will be set to 8 for constants.selected_singles and 5 for constants.selected_multiples
+  val_dms_names: ${constants.selected_singles} # null # ${constants.selected_singles} ${constants.selected_multiples} ## randomly chosen if null
+  restrict_multi: null # null is default. If training on 'both', can restrict the number of multi-mutant training tasks only.
+  seed: 0
+  # Errors downloading these datasets from HF:
+  skip_dms_names: {
+    "A4_HUMAN_Seuma_2022", # skip due to protein overlap with single mutants
+    # Had beend skipped in workshop paper, but fixed for ICLR (and first two needed for multi eval).
+    # Note that only 4 met the length criteria, and they were all multiple-mutant:
+    # "PABP_YEAST_Melamed_2013", "HIS7_YEAST_Pokusaeva_2019",
+    # "MSH2_HUMAN_Jia_2020", "SPG1_STRSG_Olson_2014",
+    # "PHOT_CHLRE_Chen_2023", "Q2N0S5_9HIV1_Haddox_2018",
+    # "ENV_HV1BR_Haddox_2016", "A0A192B1T2_9HIV1_Haddox_2018",
+  }
