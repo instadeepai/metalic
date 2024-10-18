@@ -5,13 +5,11 @@ from typing import Any, Dict, Optional, Set, Tuple
 import datasets
 import numpy as np
 import pandas as pd
-from huggingface_hub import hf_hub_download
 
 from meta.constants import (
     SUBS_ZERO_SHOT_COLS,
     SUBS_ZERO_SHOT_COLS_to_index,
 )
-from meta.tasks.proteinnpt.data_loading import standardize
 from meta.tasks.utils import FitnessTaskMetadata
 
 WT_VALUES = {
@@ -29,6 +27,8 @@ subs_meta = pd.read_csv(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "DMS_substitutions.csv")
 ).set_index("DMS_id")
 
+def standardize(x: np.ndarray) -> np.ndarray:
+    return (x - x.mean()) / x.std()
 
 def get_gym_metadata(dms_name: str) -> Dict[str, Any]:
     return subs_meta.loc[dms_name].to_dict()
