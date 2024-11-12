@@ -29,6 +29,11 @@ python run_metasupervised.py +experiment/metasupervised=gym experiment_group=met
 
 Note: Experiments were run with python 3.10.11
 
+## 🏁 Model Checkpoints
+
+The checkpoints for the metalic models can be found [here](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main) on HuggingFace. 
+The metalic checkpoints are trained on single mutant landscapes from ProteinGym, both [with](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main/single_zeroshot_auxESMIF) and [without](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main/single_zeroshot) auxiliary scores from the ESM Inverse Folding model, for all three seeds.
+
 ## 📖 Citation
 
 If you use this code, please cite one of the following papers:
