@@ -1,11 +1,11 @@
 
 # Metalic: Meta-Learning In-Context with Protein Language Models
 
-This repository implements the method presented in the paper "[METALIC: Meta-Learning In-Context with Protein Language Models](https://arxiv.org/abs/2410.08355)" (Beck et al., 2024). We introduce Metalic, an approach that uses foundation models, in-context learning over related tasks, and fine-tuning for protein fitness prediction. Metalic achieves state-of-the-art results on ProteinGym with less computation and fewer parameters.
+This repository implements the method presented in the paper "[METALIC: Meta-Learning In-Context with Protein Language Models](https://arxiv.org/abs/2410.08355)" (Beck et al., 2024). We introduce Metalic, an approach that uses foundation models, in-context learning over related tasks, and fine-tuning for protein fitness prediction. Metalic achieves state-of-the-art results on ProteinGym with less computation and fewer parameters than existing methods.
 
 ![Meta](meta.png)
 
-Protein language models (PLMs) are trained over massive quantities of unlabeled data. Using meta-learning, we also train over a smaller quantity of labelled fitness data. Using this extra data is critical given limited data for fine-tuning at test time.
+Protein language models (PLMs) are trained over massive quantities of unlabeled data. Using meta-learning, we meta-train over a smaller quantity of labelled fitness data, i.e. labeled deep mutational scans (DMS) from ProteinGym. Using this extra data is critical given limited labeled data for fine-tuning at test time.
 
 ## 🚀 How to Run
 
@@ -31,10 +31,11 @@ Note: Experiments were run with python 3.10.11
 
 ## 🏁 Model Checkpoints
 
-Select model checkpoints for metalic can be found [here](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main) on HuggingFace.
-The metalic model is meta-trained over 113 [ProteinGym](https://zenodo.org/records/13936340) DMS landscapes containing single mutations, for all three seeds. 
-Referring to the model names described in the paper, _Metalic_ checkpoints can be found [here](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main/single_zeroshot) 
-and _Metalic_AuxIF_ (trained with auxiliary scores from the ESM Inverse Folding model) checkpoints can be found [here](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main/single_zeroshot_auxESMIF) (please refer to the paper for more details on the inverse folding model).
+Select model checkpoints for metalic can be found on HuggingFace [here](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main).
+
+The metalic model is meta-trained over 113 [ProteinGym](https://zenodo.org/records/13936340) DMS landscapes containing single mutations, for three seeds. 
+Referring to the model names as described in the paper, the _Metalic_ model checkpoints can be found [here](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main/single_zeroshot) 
+and _Metalic_AuxIF_ (trained with auxiliary scores from the ESM Inverse Folding model) checkpoints can be found [here](https://huggingface.co/datasets/InstaDeepAI/metalic/tree/main/single_zeroshot_auxESMIF) (please refer to the paper for more details on each model).
 
 ## 📖 Citation
 
