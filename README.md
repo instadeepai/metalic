@@ -44,14 +44,14 @@ If you use this code, please cite one of the following papers:
 @inproceedings{{beck2024metalic,
   title={Metalic: Meta-Learning In-Context with Protein Language Models},
   author={Beck, Jacob and Surana, Shikha and McAuliffe, Manus and Bent, Oliver 
-    and Barrett, Thomas D and Garau-Luis, Juan Jose and Duckworth, Paul},
+          and Barrett, Thomas D and Garau-Luis, Juan Jose and Duckworth, Paul},
   booktitle={arXiv},
   year={2024},
 }}
 @inproceedings{{beck2024metalic,
   title={Metalic: Meta-Learning In-Context with Protein Language Models},
   author={Beck, Jacob and Surana, Shikha and McAuliffe, Manus and Bent, Oliver 
-    and Barrett, Thomas D and Garau-Luis, Juan Jose and Duckworth, Paul},
+          and Barrett, Thomas D and Garau-Luis, Juan Jose and Duckworth, Paul},
   booktitle={Neurips 2024 Workshop Foundation Models for Science},
   year={2024},
 }}
