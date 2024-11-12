@@ -39,7 +39,7 @@ and _Metalic_AuxIF_ (trained with auxiliary scores from the ESM Inverse Folding 
 
 ## 📖 Citation
 
-If you use this code, please cite one of the following papers:
+If you use this code, please our paper:
 
 ```bibtex
 @inproceedings{{beck2024metalic,
