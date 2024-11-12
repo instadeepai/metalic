@@ -39,16 +39,9 @@ and _Metalic_AuxIF_ (trained with auxiliary scores from the ESM Inverse Folding 
 
 ## 📖 Citation
 
-If you use this code, please cite one of the following papers:
+If you use this code, please our paper:
 
 ```bibtex
-@inproceedings{{beck2024metalic,
-  title={Metalic: Meta-Learning In-Context with Protein Language Models},
-  author={Beck, Jacob and Surana, Shikha and McAuliffe, Manus and Bent, Oliver 
-          and Barrett, Thomas D and Garau-Luis, Juan Jose and Duckworth, Paul},
-  booktitle={arXiv},
-  year={2024},
-}}
 @inproceedings{{beck2024metalic,
   title={Metalic: Meta-Learning In-Context with Protein Language Models},
   author={Beck, Jacob and Surana, Shikha and McAuliffe, Manus and Bent, Oliver 
