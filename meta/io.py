@@ -53,9 +53,9 @@ class FileHandler:
         self.s3_endpoint = s3_endpoint
         self.bucket = bucket
         # Assert that bucket is in {"input", "output"}. This could change along with
-        # Ichor's infrastructure but is for now structured as an input and ouput
+        # Ichor's infrastructure but is for now structured as an input and output
         # bucket.
-        # WARNING: if "bucket" == "ouput", the files will be stored under a folder
+        # WARNING: if "bucket" == "output", the files will be stored under a folder
         # named after the experiment whereas saving in the "input" bucket is more
         # straightforward as the path is directly used.
 

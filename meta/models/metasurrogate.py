@@ -393,7 +393,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
         # Dropout and norm layers
         self.dropout_module = nn.Dropout(self.dropout_prob)
         # Note these layer norms were originally ESM1bLayerNorm layers
-        # But, I beleive they were being imported as untrained LayerNorm anyway?
+        # But, I believe they were being imported as untrained LayerNorm anyway?
         self.emb_layer_norm_before = nn.LayerNorm(self.embed_dim)
         self.emb_layer_norm_after = nn.LayerNorm(self.embed_dim)
 
@@ -535,7 +535,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
                 # Skip if this task if there is not enough data
                 continue
             attention = attention.squeeze(3)
-            # Average over lenth of protein sequence
+            # Average over length of protein sequence
             attention = torch.mean(attention, dim=2)
             expected_shape = (
                 self.num_protein_npt_layers,
@@ -718,7 +718,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
         # Divide the support and query sets in half to avoid overlap
         self.support_size = len(support_set) // 2
         self.query_size = len(query_set) // 2
-        # Limit the query size to half the support size since we cant use more data than in support
+        # Limit the query size to half the support size since we can't use more data than in support
         self.query_size = min(self.query_size, len(support_set) // 2)
 
         # Fit the model on the support set
@@ -747,7 +747,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
                     assert len(
                         query_set <= eval_query_size
                     ), "Query set too large; chunking not implemented for split support."
-                    # Split the support ans query in half and make predictions on each half
+                    # Split the support and query in half and make predictions on each half
                     support1 = support_set[: self.support_size // 2]
                     query1 = query_set[: self.query_size // 2]
                     preds1, _, _, _, _ = self.embed_and_forward(
@@ -760,7 +760,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
                     )
                     preds = torch.cat([preds1, preds2], dim=0)
                 elif self.train_config.finetune_eval_chunk_strategy == "full":
-                    # Assume that the support is not split and query can be arbtirarily large
+                    # Assume that the support is not split and query can be arbitrarily large
                     preds, _, _, _, _ = self.embed_and_forward(
                         support_set, query_set, task_name, False
                     )
@@ -1002,7 +1002,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
                 self.embed_dim,
             ), f"Found shape {aux_y.shape}"
 
-        # Concatentate x and y
+        # Concatenate x and y
         x = torch.cat((x, y), dim=-2)  # 1, N, (L+1), D
         if aux_y is not None:  # 1, N, (L+2), D
             x = torch.cat((x, aux_y), dim=-2)
@@ -1177,7 +1177,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
                 mean_theta = torch.mean(
                     torch.stack([p[param_num] for p in task_thetas]), dim=0
                 )
-                # Note: The lerning rate used in the inner-loop skips the warmup phase
+                # Note: The learning rate used in the inner-loop skips the warmup phase
                 #       and only runs for 100 updates max, so it is apprximately
                 #       self.train_config.learning_rate the whole time
                 # Set the gradient
@@ -1221,7 +1221,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
         finetuning: bool = False,
     ) -> None:
         """
-        Train metasurrogate model on multiple datsets of labelled candidates.
+        Train metasurrogate model on multiple datasets of labelled candidates.
         Uses generate_support_query_splits() in BaseMetaSurrogate to generate
         data for training.
         """
@@ -1473,7 +1473,7 @@ class ProteinNPTMetaSurrogate(BaseMetaSurrogate, nn.Module):
             log.info(f"Batch Time elapsed: {(time.time() - batch_start_t):.2f} seconds")
             log.info(f"Total Time elapsed: {int(time.time() - t0)} seconds")
             time_remaining = (time.time() - t0) / step * (num_steps - step)
-            log.info(f"Avgerage Batch Time: {((time.time() - t0) / step):.2f} seconds")
+            log.info(f"Average Batch Time: {((time.time() - t0) / step):.2f} seconds")
             log.info(f"Estimated time remaining: {int(time_remaining)} seconds")
 
             # gc.collect()

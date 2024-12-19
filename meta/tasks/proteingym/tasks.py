@@ -397,7 +397,7 @@ class ProteinGymMetaSLTask:  # Cannot implement SupervisedTask since the return 
         # Iterate over val data in different ways
         for gen_name, num_evals in generators_and_evals:
 
-            # Iterate over numver of evaluations
+            # Iterate over number of evaluations
             for _ in range(num_evals):
 
                 # Store the metrics for each task in a list

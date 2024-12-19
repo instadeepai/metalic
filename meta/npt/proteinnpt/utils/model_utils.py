@@ -151,7 +151,7 @@ class Trainer:
 
     def train(self):
         """
-        Returns the last value of training_step (useful in case of early stopping for isntance)
+        Returns the last value of training_step (useful in case of early stopping for instance)
         """
 
         self.model.train()

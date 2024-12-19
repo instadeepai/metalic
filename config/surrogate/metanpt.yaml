@@ -4,7 +4,7 @@ train_config:
   support_size: 0 # 0 # 16 # 128 # null
   query_size: 100 # 100
   use_all_data: False
-  max_context_sz: 228 # 100 # 116 # 228 # 1000 # Limits max contex if support or query set varies (is null)
+  max_context_sz: 228 # 100 # 116 # 228 # 1000 # Limits max context if support or query set varies (is null)
   default_query_sz: 100 # Only used in evaluation and if query_sz is null
   default_support_sz: 128 # Only used in evaluation and if query_sz is null
   num_train_steps: 50000 # 25000 # 50000 # 100000

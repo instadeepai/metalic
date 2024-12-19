@@ -381,7 +381,7 @@ def weighted_sample_MSA(
     MSA_all_sequences, MSA_non_ref_sequences_weights, number_sampled_MSA_sequences
 ):
     """
-    We always enforce the first sequence in the MSA to be the refence sequence.
+    We always enforce the first sequence in the MSA to be the reference sequence.
     """
     msa = [MSA_all_sequences[0]]
     msa.extend(

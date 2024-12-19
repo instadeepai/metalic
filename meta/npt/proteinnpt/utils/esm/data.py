@@ -413,7 +413,7 @@ class ESMStructuralSplitDataset(torch.utils.data.Dataset):
     we have split the data into 5 partitions for cross validation. These are provided
     in a downloaded splits folder, in the format:
             splits/{split_level}/{cv_partition}/{train|valid}.txt
-    where train is the partition and valid is the concatentation of the remaining 4.
+    where train is the partition and valid is the concatenation of the remaining 4.
 
     For each SCOPe domain, we provide a pkl dump that contains:
         - seq    : The domain sequence, stored as an L-length string
@@ -495,7 +495,7 @@ class ESMStructuralSplitDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         """
-        Returns a dict with the following entires
+        Returns a dict with the following entries
          - seq : Str (domain sequence)
          - ssp : Str (SSP labels)
          - dist : np.array (distance map)
