@@ -1,7 +1,7 @@
 
 # Metalic: Meta-Learning In-Context with Protein Language Models
 
-This repository implements the method presented in the paper "[METALIC: Meta-Learning In-Context with Protein Language Models](https://arxiv.org/abs/2410.08355)" (Beck et al., 2024). We introduce Metalic, an approach that uses foundation models, in-context learning over related tasks, and fine-tuning for protein fitness prediction. Metalic achieves state-of-the-art results on ProteinGym with less computation and fewer parameters than existing methods.
+This repository implements the method presented in the paper "[METALIC: Meta-Learning In-Context with Protein Language Models](https://arxiv.org/abs/2410.08355)" (Beck et al., 2025). We introduce Metalic, an approach that uses foundation models, in-context learning over related tasks, and fine-tuning for protein fitness prediction. Metalic achieves state-of-the-art results on ProteinGym with less computation and fewer parameters than existing methods.
 
 ![Meta](meta.png)
 
@@ -42,18 +42,19 @@ and _Metalic_AuxIF_ (trained with auxiliary scores from the ESM Inverse Folding 
 If you use this code, please cite one of the following papers:
 
 ```bibtex
-@inproceedings{{beck2024metalic,
+@inproceedings{beck2025metalic,
   title={Metalic: Meta-Learning In-Context with Protein Language Models},
   author={Beck, Jacob and Surana, Shikha and McAuliffe, Manus and Bent, Oliver 
           and Barrett, Thomas D and Garau-Luis, Juan Jose and Duckworth, Paul},
-  booktitle={arXiv},
-  year={2024},
-}}
-@inproceedings{{beck2024metalic,
+  booktitle={The Thirteenth International Conference on Learning Representations},
+  year={2025},
+  url={https://openreview.net/forum?id=TUKt7ag0qq},
+}
+@inproceedings{beck2024metalic,
   title={Metalic: Meta-Learning In-Context with Protein Language Models},
   author={Beck, Jacob and Surana, Shikha and McAuliffe, Manus and Bent, Oliver 
           and Barrett, Thomas D and Garau-Luis, Juan Jose and Duckworth, Paul},
   booktitle={Neurips 2024 Workshop Foundation Models for Science},
   year={2024},
-}}
+}
 ```
