@@ -83,7 +83,7 @@ class BaseMetaSurrogate(abc.ABC):
         num_steps: Optional[int] = None,
     ) -> None:
         """
-        Train surrogate model on multiple datsets of labelled candidates.
+        Train surrogate model on multiple datasets of labelled candidates.
         n.b. Pass train_data to generate_support_query_splits() to generate
         data for training.
         """
@@ -159,7 +159,7 @@ class BaseMetaSurrogate(abc.ABC):
         num_evals: Optional[int],
         normalization: Optional[str],
     ) -> Generator[Tuple[OraclePoints, OraclePoints, str, None], None, None]:
-        """Generate multiple splits of each tast for training and evaluation.
+        """Generate multiple splits of each task for training and evaluation.
 
         Split the data into support sets (context) and query sets (targets).
         Also returns the task name from which the batch was sampled.
@@ -193,7 +193,7 @@ class BaseMetaSurrogate(abc.ABC):
                         permuted_data[split:],
                     )
                 elif self.support_size is None:
-                    # Select suport set size
+                    # Select support set size
                     max_support_size = len(permuted_data) - self.query_size  # type: ignore
                     cur_support_size = (
                         max_support_size

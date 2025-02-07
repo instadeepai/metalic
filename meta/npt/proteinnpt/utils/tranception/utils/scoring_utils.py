@@ -103,7 +103,7 @@ def sequence_replace_single(sequence, char_to_replace, char_replacements):
 
 def sequence_replace(sequences, char_to_replace, char_replacements):
     """
-    Helper function that replaces all Amino Acids passsed in via char_to_replace (as a string of AAs) with Amino Acids sampled from char_replacements (also a string of eligible AAs).
+    Helper function that replaces all Amino Acids passed in via char_to_replace (as a string of AAs) with Amino Acids sampled from char_replacements (also a string of eligible AAs).
     """
     return [
         sequence_replace_single(sequence, char_to_replace, char_replacements)

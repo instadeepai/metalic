@@ -88,7 +88,7 @@ def oracle_points_to_dataframe(
 
 
 def oracle_points_to_hf_dataset(oracle_points: OraclePoints) -> Dataset:
-    """Conver OraclePoints to HF Dataset."""
+    """Convert OraclePoints to HF Dataset."""
     raise NotImplementedError()
 
 

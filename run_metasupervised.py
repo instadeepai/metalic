@@ -42,7 +42,7 @@ def run_metasupervised(cfg: DictConfig) -> None:  # noqa: CCR001
     set_seeds(cfg.seed)
     task = hydra.utils.instantiate(cfg.task)
     log.info("Setting up task (splitting datasets etc.)")
-    # load 0-shot data if using auxillary zero-shot predictions
+    # load 0-shot data if using auxiliary zero-shot predictions
     load_zero_shot =  cfg.surrogate.model_config.aux_pred
     task.setup_datasets(load_zero_shot=load_zero_shot)
     commit_hash = get_current_git_commit_hash()

@@ -335,7 +335,7 @@ def process_batch(
         batch["mutant_mutated_seq_pairs"] += model.MSA_sample_sequences
 
     # Slice sequences around mutation if sequence longer than context length
-    # (consistenly with what has happened in embeddings.py)
+    # (consistently with what has happened in embeddings.py)
     if (
         args.max_positions is not None and raw_sequence_length + 1 > args.max_positions
     ):  # Adding one for the BOS token
